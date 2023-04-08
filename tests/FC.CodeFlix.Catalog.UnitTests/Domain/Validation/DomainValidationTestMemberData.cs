@@ -24,7 +24,6 @@ public partial class DomainValidationTest
         for (int i = 0; i < numberOfTests; i++)
         {
             var productName = faker.Commerce.ProductName();
-            Console.WriteLine(productName);
             var minLength = new Random().Next(0, productName.Length - 1);
             yield return new object[] { productName, minLength };
         }

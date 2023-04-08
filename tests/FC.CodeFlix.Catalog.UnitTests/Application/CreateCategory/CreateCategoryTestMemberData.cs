@@ -47,7 +47,5 @@ public partial class CreateCategoryTest
         list.Add(new object[] { inputWithNullDescriptionGreaterThan10_000Char, "Description should not be greather than 10000 characteres" });
 
         return list;
-
-
     }
 }
