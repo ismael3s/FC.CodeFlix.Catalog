@@ -1,7 +1,7 @@
 ﻿using Bogus;
 
 namespace FC.CodeFlix.Catalog.UnitTests.Domain.Validation;
-public partial class DomainValidationTest
+public class DomainValidationDataGenerator
 {
 
     public static IEnumerable<object[]> MinLengthTestThrowParams(int numberOfTests = 6)

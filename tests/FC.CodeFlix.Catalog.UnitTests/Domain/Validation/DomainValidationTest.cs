@@ -4,7 +4,7 @@ using FC.CodeFlix.Catalog.Domain.Validation;
 using FluentAssertions;
 
 namespace FC.CodeFlix.Catalog.UnitTests.Domain.Validation;
-public partial class DomainValidationTest
+public class DomainValidationTest
 {
     private Faker Faker { get; set; } = new Faker();
 
@@ -58,7 +58,11 @@ public partial class DomainValidationTest
 
     [Theory(DisplayName = nameof(MinLength_ShouldThrowError_WhenTheIsLesserThanSpecifiedMinLength))]
     [Trait("Domain", "DomainValidation - Validation")]
-    [MemberData(nameof(MinLengthTestThrowParams), parameters: 6)]
+    [MemberData(
+        nameof(DomainValidationDataGenerator.MinLengthTestThrowParams),
+        parameters: 6,
+        MemberType = typeof(DomainValidationDataGenerator)
+        )]
     public void MinLength_ShouldThrowError_WhenTheIsLesserThanSpecifiedMinLength(string? value, int minLength)
     {
         var fieldName = Faker.Internet.UserName();
@@ -70,7 +74,11 @@ public partial class DomainValidationTest
 
     [Theory(DisplayName = nameof(MinLength_ShouldNotThrowError_WhenValueIsGreatherThanSpecifiedMinLength))]
     [Trait("Domain", "DomainValidation - Validation")]
-    [MemberData(nameof(MinLengthTestNotThrowParams), parameters: 6)]
+    [MemberData(
+        nameof(DomainValidationDataGenerator.MinLengthTestNotThrowParams),
+        parameters: 6,
+        MemberType = typeof(DomainValidationDataGenerator)
+    )]
     public void MinLength_ShouldNotThrowError_WhenValueIsGreatherThanSpecifiedMinLength(string value, int minLength)
     {
         var fieldName = Faker.Internet.UserName();
@@ -81,7 +89,11 @@ public partial class DomainValidationTest
 
     [Theory(DisplayName = nameof(MaxLength_ShouldNotThrowError_WhenValueIsLesserThanSpecifiedMaxLength))]
     [Trait("Domain", "DomainValidation - Validation")]
-    [MemberData(nameof(MaxLengthTestNotThrowParams), parameters: 6)]
+    [MemberData(
+        nameof(DomainValidationDataGenerator.MaxLengthTestNotThrowParams),
+        parameters: 6,
+        MemberType = typeof(DomainValidationDataGenerator)
+    )]
     public void MaxLength_ShouldNotThrowError_WhenValueIsLesserThanSpecifiedMaxLength(string value, int maxLength)
     {
         var fieldName = Faker.Internet.UserName();
@@ -92,7 +104,11 @@ public partial class DomainValidationTest
 
     [Theory(DisplayName = nameof(MaxLength_ShouldThrowError_WhenValueIsGreaterThanSpecifiedMaxLength))]
     [Trait("Domain", "DomainValidation - Validation")]
-    [MemberData(nameof(MaxLengthTestThrowParams), parameters: 6)]
+    [MemberData(
+        nameof(DomainValidationDataGenerator.MaxLengthTestThrowParams),
+        parameters: 6,
+        MemberType = typeof(DomainValidationDataGenerator)
+    )]
     public void MaxLength_ShouldThrowError_WhenValueIsGreaterThanSpecifiedMaxLength(string? value, int maxLength)
     {
         var fieldName = Faker.Internet.UserName();
