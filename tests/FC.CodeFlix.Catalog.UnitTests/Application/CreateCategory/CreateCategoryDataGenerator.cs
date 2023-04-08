@@ -1,5 +1,7 @@
-﻿namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
-public partial class CreateCategoryTest
+﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
+
+namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
+public class CreateCategoryDataGenerator
 {
 
     public static IEnumerable<object[]> GetInvalidInputs()
@@ -45,6 +47,32 @@ public partial class CreateCategoryTest
         };
 
         list.Add(new object[] { inputWithNullDescriptionGreaterThan10_000Char, "Description should not be greather than 10000 characteres" });
+
+        return list;
+    }
+
+    public static IEnumerable<object[]> GetValidInputParams()
+    {
+
+        var fixture = new CreateCategoryTestFixture();
+
+        var list = new List<object[]>();
+
+        var validInput = fixture.GetValidCreateCategoryInput();
+
+        list.Add(new object[] { validInput });
+
+        var validInputWithIsActiveFalse = validInput with { IsActive = false };
+
+        list.Add(new object[] { validInputWithIsActiveFalse });
+
+        var validInputWithIsActiveTrue = validInput with { IsActive = true };
+
+        list.Add(new object[] { validInputWithIsActiveTrue });
+
+
+        var inputWithEmptyDescription = new CreateCategoryInput(validInput.Name);
+        list.Add(new object[] { inputWithEmptyDescription });
 
         return list;
     }

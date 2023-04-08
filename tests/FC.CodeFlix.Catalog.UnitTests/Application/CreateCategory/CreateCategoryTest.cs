@@ -8,7 +8,7 @@ using SUT = FC.CodeFlix.Catalog.Application.UseCases.Category;
 namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
 
 [Collection(nameof(CreateCategoryTestFixture))]
-public partial class CreateCategoryTest
+public class CreateCategoryTest
 {
     private readonly CreateCategoryTestFixture _createCategoryTestFixture;
     public CreateCategoryTest(CreateCategoryTestFixture createCategoryTestFixture)
@@ -18,22 +18,22 @@ public partial class CreateCategoryTest
 
     [Theory(DisplayName = nameof(CreateCategory_ShouldCreateCategory_WhenValidDataIsProvide))]
     [Trait("Application", "CreateCategory - Use Cases")]
-    [InlineData(true)]
-    [InlineData(false)]
-    public async void CreateCategory_ShouldCreateCategory_WhenValidDataIsProvide(bool isActive)
+    [MemberData(
+        nameof(CreateCategoryDataGenerator.GetValidInputParams),
+        MemberType = typeof(CreateCategoryDataGenerator)
+        )]
+    public async void CreateCategory_ShouldCreateCategory_WhenValidDataIsProvide(CreateCategoryInput input)
     {
         var repositoryMock = _createCategoryTestFixture.GetCategoryRepositoryMock();
         var unitOfWorkMock = _createCategoryTestFixture.GetUOWRepositoryMock();
         var sut = new SUT.CreateCategory.CreateCategory(repositoryMock.Object, unitOfWorkMock.Object);
-
-        var input = _createCategoryTestFixture.GetValidCreateCategoryInput(isActive);
 
         var output = await sut.Handle(input, CancellationToken.None);
 
         output.Id.Should().NotBeEmpty();
         output.Name.Should().Be(input.Name);
         output.Description.Should().Be(input.Description);
-        output.IsActive.Should().Be(isActive);
+        output.IsActive.Should().Be(input.IsActive);
         output.CreatedAt.Should().NotBeSameDateAs(default);
 
         repositoryMock.Verify(repository =>
@@ -52,7 +52,10 @@ public partial class CreateCategoryTest
 
     [Theory(DisplayName = nameof(CreateCategory_ShouldNotCreateCategory_WhenInvalidDataIsProvide))]
     [Trait("Application", "CreateCategory - Use Cases")]
-    [MemberData(nameof(GetInvalidInputs))]
+    [MemberData(
+        nameof(CreateCategoryDataGenerator.GetInvalidInputs),
+        MemberType = typeof(CreateCategoryDataGenerator)
+        )]
     public async void CreateCategory_ShouldNotCreateCategory_WhenInvalidDataIsProvide(CreateCategoryInput input, string errorMessage)
     {
         var repositoryMock = _createCategoryTestFixture.GetCategoryRepositoryMock();
@@ -77,6 +80,37 @@ public partial class CreateCategoryTest
         unitOfWorkMock.Verify(uow =>
             uow.CommitAsync(It.IsAny<CancellationToken>()),
             Times.Never()
+        );
+    }
+
+    [Fact(DisplayName = nameof(CreateCategory_ShouldCreateCategory_OnlyWithName))]
+    [Trait("Application", "CreateCategory - Use Cases")]
+    public async void CreateCategory_ShouldCreateCategory_OnlyWithName()
+    {
+        var repositoryMock = _createCategoryTestFixture.GetCategoryRepositoryMock();
+        var unitOfWorkMock = _createCategoryTestFixture.GetUOWRepositoryMock();
+        var sut = new SUT.CreateCategory.CreateCategory(repositoryMock.Object, unitOfWorkMock.Object);
+
+
+        var input = new CreateCategoryInput(_createCategoryTestFixture.GetValidCategoryName());
+
+        var output = await sut.Handle(input, CancellationToken.None);
+
+        output.Name.Should().Be(input.Name);
+        output.Description.Should().Be(string.Empty);
+        output.IsActive.Should().BeTrue();
+
+
+        repositoryMock.Verify(repository =>
+            repository.InsertAsync(
+                It.IsAny<Category>(),
+                It.IsAny<CancellationToken>()
+            ),
+            Times.Once()
+        );
+        unitOfWorkMock.Verify(uow =>
+            uow.CommitAsync(It.IsAny<CancellationToken>()),
+            Times.Once()
         );
     }
 }
