@@ -2,7 +2,7 @@
 using FluentAssertions;
 
 namespace FC.CodeFlix.Catalog.UnitTests.Application.GetCategory;
-[Collection(nameof(GetCategoryTestFixture))]
+[Collection(nameof(DeleteCategoryTestFixture))]
 public class GetCategoryInputValidationTest
 {
     public GetCategoryInputValidationTest()

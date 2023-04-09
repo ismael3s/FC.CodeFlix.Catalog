@@ -2,7 +2,7 @@
 using FC.CodeFlix.Catalog.Domain.Repositories;
 
 namespace FC.CodeFlix.Catalog.Application.UseCases.Category.GetCategory;
-public class GetCategory : IGetCategory
+public sealed class GetCategory : IGetCategory
 {
     private readonly ICategoryRepository _categoryRepository;
 

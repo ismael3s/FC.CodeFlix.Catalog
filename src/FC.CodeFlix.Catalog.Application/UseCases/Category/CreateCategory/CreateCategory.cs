@@ -4,7 +4,7 @@ using FC.CodeFlix.Catalog.Application.Interfaces;
 using FC.CodeFlix.Catalog.Application.UseCases.Category.Common;
 using FC.CodeFlix.Catalog.Domain.Repositories;
 using DomainEntity = FC.CodeFlix.Catalog.Domain.Entities;
-public class CreateCategory : ICreateCategory
+public sealed class CreateCategory : ICreateCategory
 {
 
     private readonly ICategoryRepository _categoryRepository;

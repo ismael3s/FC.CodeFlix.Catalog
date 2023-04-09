@@ -2,7 +2,7 @@
 using FC.CodeFlix.Catalog.Domain.Validation;
 
 namespace FC.CodeFlix.Catalog.Domain.Entities;
-public class Category : AggregateRoot
+public sealed class Category : AggregateRoot
 {
     private const int MAX_DESCRIPTION_LENGTH = 10_000;
 

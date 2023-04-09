@@ -3,12 +3,12 @@ using FluentAssertions;
 using Moq;
 using SUT = FC.CodeFlix.Catalog.Application.UseCases.Category.GetCategory;
 namespace FC.CodeFlix.Catalog.UnitTests.Application.GetCategory;
-[Collection(nameof(GetCategoryTestFixture))]
+[Collection(nameof(DeleteCategoryTestFixture))]
 public class GetCategoryTest
 {
-    private readonly GetCategoryTestFixture _fixture;
+    private readonly DeleteCategoryTestFixture _fixture;
 
-    public GetCategoryTest(GetCategoryTestFixture fixture)
+    public GetCategoryTest(DeleteCategoryTestFixture fixture)
     {
         _fixture = fixture;
     }
