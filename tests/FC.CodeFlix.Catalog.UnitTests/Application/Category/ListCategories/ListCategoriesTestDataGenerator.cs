@@ -4,6 +4,9 @@ namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.ListCategories;
 
 public class ListCategoriesTestDataGenerator
 {
+    protected ListCategoriesTestDataGenerator()
+    {
+    }
 
     public static IEnumerable<object[]> GetInputWithoutAllParams(int times = 14)
     {

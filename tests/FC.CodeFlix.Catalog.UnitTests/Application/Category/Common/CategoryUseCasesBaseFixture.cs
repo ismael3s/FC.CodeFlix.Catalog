@@ -33,7 +33,7 @@ public abstract class CategoryUseCasesBaseFixture : BaseFixture
 
     public Entities.Category GetCategory()
     {
-        return new Entities.Category(GetValidCategoryName(), GetValidDescription(), GetRandomIsActive());
+        return Entities.Category.Create(GetValidCategoryName(), GetValidDescription(), GetRandomIsActive());
     }
 
     public IEnumerable<Entities.Category> GetCategories(int amount = 5)

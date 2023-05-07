@@ -58,7 +58,7 @@ public class CategoryTestFixture : BaseFixture
 
     public DomainEntities.Category Build()
     {
-        return new DomainEntities.Category(Name, Description, IsActive);
+        return DomainEntities.Category.Create(Name, Description, IsActive);
     }
 
     public DomainEntities.Category BuildValidCategory()

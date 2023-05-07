@@ -7,5 +7,10 @@ public class NotFoundException : ApplicationException
     {
     }
 
+    public static void ThrowIfNull(object? obj, string? message)
+    {
+        if (obj is null)
+            throw new NotFoundException(message);
+    }
 
 }

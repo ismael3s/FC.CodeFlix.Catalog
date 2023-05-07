@@ -3,6 +3,9 @@
 namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.UpdateCategory;
 public class UpdateCategoryTestDataGenerator
 {
+    protected UpdateCategoryTestDataGenerator()
+    {
+    }
 
     public static IEnumerable<object[]> UpdateCategoryValidData(int times = 10)
     {

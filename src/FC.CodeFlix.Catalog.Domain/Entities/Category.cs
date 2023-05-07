@@ -12,7 +12,7 @@ public sealed class Category : AggregateRoot
 
     public DateTime CreatedAt { get; private set; }
 
-    internal Category(string name, string description, bool isActive = true) : base()
+    private Category(string name, string description, bool isActive = true) : base()
     {
         Name = name;
         Description = description;

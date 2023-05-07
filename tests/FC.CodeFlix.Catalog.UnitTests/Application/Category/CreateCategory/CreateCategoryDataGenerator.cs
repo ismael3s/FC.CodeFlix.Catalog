@@ -3,6 +3,9 @@
 namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.CreateCategory;
 public class CreateCategoryDataGenerator
 {
+    protected CreateCategoryDataGenerator()
+    {
+    }
 
     public static IEnumerable<object[]> GetInvalidInputs()
     {
