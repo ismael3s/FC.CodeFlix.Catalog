@@ -17,7 +17,7 @@ public class GetCategoryTest
     [Trait("Application", "GetCategory - Use Cases")]
     public async Task ShouldReturnAnCategory_WhenIdIsFound()
     {
-        var categoryMockRepository = _fixture.GetCategoryMockRepository();
+        var categoryMockRepository = _fixture.GetCategoryRepositoryMock();
         var sampleCategory = _fixture.GetCategory();
 
         categoryMockRepository.Setup(
@@ -50,7 +50,7 @@ public class GetCategoryTest
     [Trait("Application", "GetCategory - Use Cases")]
     public async Task ShouldForwardRepositoryError_WhenCategoryIsNotfound()
     {
-        var categoryMockRepository = _fixture.GetCategoryMockRepository();
+        var categoryMockRepository = _fixture.GetCategoryRepositoryMock();
         var guid = Guid.NewGuid();
 
         categoryMockRepository.Setup(

@@ -19,8 +19,8 @@ public class DeleteCategoryTest
     [Trait("Application", "DeleteCategory - Use Cases")]
     public async void ShouldBeAbleToDeleteACategory()
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         var category = _fixture.GetCategory();
 
         categoryRepositoryMock.Setup(
@@ -53,8 +53,8 @@ public class DeleteCategoryTest
     [Trait("Application", "DeleteCategory - Use Cases")]
     public async void ShoudlThrowAnErrorWhenTryToDeleteANotFoundCategory()
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         var category = _fixture.GetCategory();
         categoryRepositoryMock.Setup(
             x => x.GetAsync(

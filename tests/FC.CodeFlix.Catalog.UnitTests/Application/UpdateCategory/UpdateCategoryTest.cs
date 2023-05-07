@@ -25,8 +25,8 @@ public class UpdateCategoryTest
     )]
     public async void ShouldBeAbleToUpdateACategory(Category category, UpdateCategoryInput updateCategoryInput)
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         categoryRepositoryMock.Setup(
               repository => repository.GetAsync(
                 It.IsAny<Guid>(),
@@ -56,8 +56,8 @@ public class UpdateCategoryTest
    )]
     public async void ShouldBeAbleToUpdateACategoryWithoutProvidingIsActive(Category category, UpdateCategoryInput updateCategoryInput)
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         categoryRepositoryMock.Setup(
               repository => repository.GetAsync(
                 It.IsAny<Guid>(),
@@ -92,8 +92,8 @@ public class UpdateCategoryTest
 )]
     public async void ShouldBeAbleToUpdateACategoryOnlyWithName(Category category, UpdateCategoryInput updateCategoryInput)
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         categoryRepositoryMock.Setup(
               repository => repository.GetAsync(
                 It.IsAny<Guid>(),
@@ -124,8 +124,8 @@ public class UpdateCategoryTest
     [Trait("Application", "UpdateCategory - Use Cases")]
     public async void ShouldThrowErrorWhenTryToUpdateANotFoundCategoru()
     {
-        var unitOfWorkRepositoryMock = _fixture.GetUnitOfWorkMockRepository();
-        var categoryRepositoryMock = _fixture.GetCategoryMockRepository();
+        var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
+        var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
         var guid = Guid.NewGuid();
         categoryRepositoryMock.Setup(
               repository => repository.GetAsync(

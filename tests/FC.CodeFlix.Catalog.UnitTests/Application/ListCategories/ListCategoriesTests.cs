@@ -19,7 +19,7 @@ public class ListCategoriesTests
     [Trait("Application", "List Categories - Use Cases")]
     public async Task List()
     {
-        var repositoryMock = _fixture.GetRepositoryMock();
+        var repositoryMock = _fixture.GetCategoryRepositoryMock();
         var input = _fixture.GetInput();
         var categories = _fixture.GetCategories().ToList();
         var outputRepositorySearch = new SearchOutput<Category>(
@@ -57,7 +57,7 @@ public class ListCategoriesTests
     [Trait("Application", "List Categories - Use Cases")]
     public async Task ListShouldReturnAnEmptyList()
     {
-        var repositoryMock = _fixture.GetRepositoryMock();
+        var repositoryMock = _fixture.GetCategoryRepositoryMock();
         var input = _fixture.GetInput();
         var outputRepositorySearch = new SearchOutput<Category>(
             currentPage: input.Page,
@@ -98,7 +98,7 @@ public class ListCategoriesTests
      )]
     public async Task ListWithoutAllInputParams(UseCase.ListCategoriesInput input)
     {
-        var repositoryMock = _fixture.GetRepositoryMock();
+        var repositoryMock = _fixture.GetCategoryRepositoryMock();
         var categories = _fixture.GetCategories().ToList();
         var outputRepositorySearch = new SearchOutput<Category>(
             currentPage: input.Page,

@@ -1,11 +1,8 @@
-﻿using FC.CodeFlix.Catalog.Application.Interfaces;
-using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
-using FC.CodeFlix.Catalog.Domain.Repositories;
-using FC.CodeFlix.Catalog.UnitTests.Common;
-using Moq;
+﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
+using FC.CodeFlix.Catalog.UnitTests.Application.Common;
 
 namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
-public class CreateCategoryTestFixture : BaseFixture
+public class CreateCategoryTestFixture : CategoryUseCasesBaseFixture
 {
 
     public CreateCategoryTestFixture() : base()
@@ -31,33 +28,6 @@ public class CreateCategoryTestFixture : BaseFixture
 
         return new CreateCategoryInput(aName, aDescription, aIsActive);
     }
-
-    public string GetValidCategoryName()
-    {
-        string name;
-
-        do
-        {
-            name = Faker.Commerce.ProductName();
-        } while (name?.Length < 3 || name?.Length > 255);
-
-        return name!;
-    }
-
-    public string GetValidDescription()
-    {
-        var description = Faker.Commerce.ProductDescription();
-
-        if (description.Length > 10_000) return description[..(10_000)];
-
-        return description;
-    }
-
-    public bool GetRandomIsActive() => new Random().NextDouble() < 0.5;
-
-    public Mock<ICategoryRepository> GetCategoryRepositoryMock() => new();
-
-    public Mock<IUnitOfWork> GetUOWRepositoryMock() => new();
 
 
 }
