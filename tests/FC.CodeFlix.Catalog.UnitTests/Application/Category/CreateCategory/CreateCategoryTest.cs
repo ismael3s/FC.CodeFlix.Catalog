@@ -1,11 +1,11 @@
 ﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
-using FC.CodeFlix.Catalog.Domain.Entities;
 using FC.CodeFlix.Catalog.Domain.Exceptions;
 using FluentAssertions;
 using Moq;
+using Entities = FC.CodeFlix.Catalog.Domain.Entities;
 using SUT = FC.CodeFlix.Catalog.Application.UseCases.Category;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.CreateCategory;
 
 [Collection(nameof(CreateCategoryTestFixture))]
 public class CreateCategoryTest
@@ -38,7 +38,7 @@ public class CreateCategoryTest
 
         repositoryMock.Verify(repository =>
             repository.InsertAsync(
-                It.IsAny<Category>(),
+                It.IsAny<Entities.Category>(),
                 It.IsAny<CancellationToken>()
             ),
             Times.Once
@@ -72,7 +72,7 @@ public class CreateCategoryTest
 
         repositoryMock.Verify(repository =>
             repository.InsertAsync(
-                It.IsAny<Category>(),
+                It.IsAny<Entities.Category>(),
                 It.IsAny<CancellationToken>()
             ),
             Times.Never()
@@ -103,7 +103,7 @@ public class CreateCategoryTest
 
         repositoryMock.Verify(repository =>
             repository.InsertAsync(
-                It.IsAny<Category>(),
+                It.IsAny<Entities.Category>(),
                 It.IsAny<CancellationToken>()
             ),
             Times.Once()

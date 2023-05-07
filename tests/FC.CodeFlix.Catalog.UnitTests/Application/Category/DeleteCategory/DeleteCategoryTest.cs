@@ -1,10 +1,9 @@
 ﻿using FC.CodeFlix.Catalog.Application.Exceptions;
 using FC.CodeFlix.Catalog.Application.UseCases.Category.DeleteCategory;
-using FC.CodeFlix.Catalog.UnitTests.Application.GetCategory;
 using FluentAssertions;
 using Moq;
 using UseCases = FC.CodeFlix.Catalog.Application.UseCases.Category.DeleteCategory;
-namespace FC.CodeFlix.Catalog.UnitTests.Application.DeleteCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.DeleteCategory;
 [Collection(nameof(DeleteCategoryTestFixture))]
 public class DeleteCategoryTest
 {

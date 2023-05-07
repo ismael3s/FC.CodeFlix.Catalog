@@ -1,7 +1,7 @@
 ﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
-using FC.CodeFlix.Catalog.UnitTests.Application.Common;
+using FC.CodeFlix.Catalog.UnitTests.Application.Category.Common;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.CreateCategory;
 public class CreateCategoryTestFixture : CategoryUseCasesBaseFixture
 {
 

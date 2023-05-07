@@ -1,7 +1,7 @@
 ﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.ListCategories;
-using FC.CodeFlix.Catalog.UnitTests.Application.Common;
+using FC.CodeFlix.Catalog.UnitTests.Application.Category.Common;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.ListCategories;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.ListCategories;
 [CollectionDefinition(nameof(ListCategoriesTestsFixture))]
 public class ListCategoriesTestsFixtureCollection : ICollectionFixture<ListCategoriesTestsFixture>
 {

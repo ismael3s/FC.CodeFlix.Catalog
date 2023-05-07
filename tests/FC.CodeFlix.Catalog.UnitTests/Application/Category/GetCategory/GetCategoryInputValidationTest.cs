@@ -1,7 +1,8 @@
 ﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.GetCategory;
+using FC.CodeFlix.Catalog.UnitTests.Application.Category.DeleteCategory;
 using FluentAssertions;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.GetCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.GetCategory;
 [Collection(nameof(DeleteCategoryTestFixture))]
 public class GetCategoryInputValidationTest
 {

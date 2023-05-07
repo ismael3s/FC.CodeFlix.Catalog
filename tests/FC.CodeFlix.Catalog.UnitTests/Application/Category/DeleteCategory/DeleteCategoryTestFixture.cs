@@ -1,6 +1,6 @@
-﻿using FC.CodeFlix.Catalog.UnitTests.Application.Common;
+﻿using FC.CodeFlix.Catalog.UnitTests.Application.Category.Common;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.GetCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.DeleteCategory;
 
 [CollectionDefinition(nameof(DeleteCategoryTestFixture))]
 public class CollectionDeleteCategoryTestFixture : ICollectionFixture<DeleteCategoryTestFixture> { }

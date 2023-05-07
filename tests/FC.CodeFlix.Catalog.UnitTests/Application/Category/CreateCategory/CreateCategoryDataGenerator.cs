@@ -1,6 +1,6 @@
 ﻿using FC.CodeFlix.Catalog.Application.UseCases.Category.CreateCategory;
 
-namespace FC.CodeFlix.Catalog.UnitTests.Application.CreateCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.CreateCategory;
 public class CreateCategoryDataGenerator
 {
 

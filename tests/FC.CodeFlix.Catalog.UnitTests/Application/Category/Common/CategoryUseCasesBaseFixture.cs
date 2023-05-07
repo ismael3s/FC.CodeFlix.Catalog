@@ -1,10 +1,9 @@
 ﻿using FC.CodeFlix.Catalog.Application.Interfaces;
-using FC.CodeFlix.Catalog.Domain.Entities;
 using FC.CodeFlix.Catalog.Domain.Repositories;
 using FC.CodeFlix.Catalog.UnitTests.Common;
 using Moq;
-
-namespace FC.CodeFlix.Catalog.UnitTests.Application.Common;
+using Entities = FC.CodeFlix.Catalog.Domain.Entities;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.Common;
 
 public abstract class CategoryUseCasesBaseFixture : BaseFixture
 {
@@ -24,7 +23,7 @@ public abstract class CategoryUseCasesBaseFixture : BaseFixture
     {
         var description = Faker.Commerce.ProductDescription();
 
-        if (description.Length > 10_000) return description[..(10_000)];
+        if (description.Length > 10_000) return description[..10_000];
 
         return description;
     }
@@ -32,12 +31,12 @@ public abstract class CategoryUseCasesBaseFixture : BaseFixture
     public bool GetRandomIsActive() => new Random().NextDouble() < 0.5;
 
 
-    public Category GetCategory()
+    public Entities.Category GetCategory()
     {
-        return new Category(GetValidCategoryName(), GetValidDescription(), GetRandomIsActive());
+        return new Entities.Category(GetValidCategoryName(), GetValidDescription(), GetRandomIsActive());
     }
 
-    public IEnumerable<Category> GetCategories(int amount = 5)
+    public IEnumerable<Entities.Category> GetCategories(int amount = 5)
     {
         for (int index = 0; index < amount; index++)
         {

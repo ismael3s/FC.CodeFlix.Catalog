@@ -1,11 +1,10 @@
 ﻿using FC.CodeFlix.Catalog.Application.Exceptions;
 using FC.CodeFlix.Catalog.Application.UseCases.Category.UpdateCategory;
-using FC.CodeFlix.Catalog.Domain.Entities;
 using FluentAssertions;
 using Moq;
+using Entities = FC.CodeFlix.Catalog.Domain.Entities;
 using UseCase = FC.CodeFlix.Catalog.Application.UseCases.Category.UpdateCategory;
-
-namespace FC.CodeFlix.Catalog.UnitTests.Application.UpdateCategory;
+namespace FC.CodeFlix.Catalog.UnitTests.Application.Category.UpdateCategory;
 [Collection(nameof(UpdateCategoryTestFixture))]
 public class UpdateCategoryTest
 {
@@ -23,7 +22,7 @@ public class UpdateCategoryTest
         parameters: 20,
         MemberType = typeof(UpdateCategoryTestDataGenerator)
     )]
-    public async void ShouldBeAbleToUpdateACategory(Category category, UpdateCategoryInput updateCategoryInput)
+    public async void ShouldBeAbleToUpdateACategory(Entities.Category category, UpdateCategoryInput updateCategoryInput)
     {
         var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
         var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
@@ -54,7 +53,7 @@ public class UpdateCategoryTest
        parameters: 20,
        MemberType = typeof(UpdateCategoryTestDataGenerator)
    )]
-    public async void ShouldBeAbleToUpdateACategoryWithoutProvidingIsActive(Category category, UpdateCategoryInput updateCategoryInput)
+    public async void ShouldBeAbleToUpdateACategoryWithoutProvidingIsActive(Entities.Category category, UpdateCategoryInput updateCategoryInput)
     {
         var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
         var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
@@ -90,7 +89,7 @@ public class UpdateCategoryTest
    parameters: 20,
    MemberType = typeof(UpdateCategoryTestDataGenerator)
 )]
-    public async void ShouldBeAbleToUpdateACategoryOnlyWithName(Category category, UpdateCategoryInput updateCategoryInput)
+    public async void ShouldBeAbleToUpdateACategoryOnlyWithName(Entities.Category category, UpdateCategoryInput updateCategoryInput)
     {
         var unitOfWorkRepositoryMock = _fixture.GetUOWRepositoryMock();
         var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
