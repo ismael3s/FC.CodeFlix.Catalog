@@ -99,7 +99,6 @@ public partial class CategoryTest
         action.Should()
             .Throw<EntityValidationException>()
             .WithMessage("Name should not be empty or null");
-
     }
 
 

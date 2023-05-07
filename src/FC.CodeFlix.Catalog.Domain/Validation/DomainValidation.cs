@@ -3,6 +3,9 @@
 namespace FC.CodeFlix.Catalog.Domain.Validation;
 public class DomainValidation
 {
+    protected DomainValidation()
+    {
+    }
 
     public static void IsNotNull(object target, string fieldName)
     {
